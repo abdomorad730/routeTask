@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.* 
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Debug
+*.local
+*.sublime-workspace
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Optional runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build folders
+dist/
+build/
+
+# Coverage directory used by testing tools
+coverage/
+
+# OpenAI SDK generated cache
+.openai/
+
+# Uploaded images / temp files (if any)
+uploads/
+tmp/
+*.tmp
+
+# Misc
+*.tgz
+*.bak
