@@ -15,12 +15,15 @@ const limiter = rateLimit({
 
 const bootstrap = async (app, express) => {
   try {
-    app.use(cors()); 
+    app.use(cors());
     app.use(helmet());
     app.use(limiter);
     await connection();
 
     app.use(express.json());
+    app.get('/', (req, res) => {
+      res.send('Hello from Express on Vercel!');
+    });
 
     app.use("/users", userRouter);
 
