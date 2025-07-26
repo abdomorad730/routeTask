@@ -3,6 +3,7 @@ import userModel from "../../DB/models/user.model.js";
 import { hash, verify } from "../../services/hashing.js";
 import { eventEmitter } from "../../services/sendEmail.js";
 import cloudinary from "../../services/cloudinary.js";
+import { log } from "console";
 
 export const sign_up = async (req, res, next) => {
   try {
@@ -16,12 +17,11 @@ export const sign_up = async (req, res, next) => {
       return res.status(400).json({ msg: 'Email already exists' });
     }
 
-    const hashedPassword = hash(password, +process.env.SALT_ROUNDS);
 
     const user = await userModel.create({
       name,
       email,
-      password: hashedPassword,
+      password,
       gender,
       phone,
     });
@@ -119,8 +119,10 @@ export const login = async (req, res, next) => {
     if (!user) {
       return res.status(400).json({ msg: 'User not found' });
     }
-
+    console.log(user.password);
+    
     if (!verify(password, user.password)) {
+
       return res.status(400).json({ msg: 'Incorrect password' });
     }
 
